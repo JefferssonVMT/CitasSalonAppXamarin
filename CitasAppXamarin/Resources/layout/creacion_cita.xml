@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+    
+    <TextView
+        android:text="Agenda tu cita"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:minWidth="25px"
+        android:minHeight="25px"
+        android:id="@+id/textView1" />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Descripción:"
+        android:layout_marginBottom="5dp"
+    />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:hint="Agrega una descripcion"
+        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+        android:textSize="15dip"
+        android:id="@+id/editText_Descripcion" />
+
+    
+    <TextView
+        android:id="@+id/label_TiposServivios"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Tipo de servicio:"
+        android:layout_marginBottom="5dp"
+    />
+    <Spinner
+        android:id="@+id/spinner_TipoServicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:spinnerMode="dialog"
+    />
+
+    <TextView
+        android:id="@+id/label_Servicios"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="Servicio:"
+        android:layout_marginBottom="5dp"
+    />
+    <Spinner
+        android:id="@+id/spinner_Servicios"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:gravity="center"
+        android:layout_gravity="center"
+        android:spinnerMode="dialog"
+    />
+
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dip"
+        android:text="N° de deposito:"
+        android:layout_marginBottom="5dp"
+    />
+    <EditText
+        android:inputType="textMultiLine"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textAlignment="center"
+        android:hint="Numero de deposito"
+        style="@style/ThemeOverlay.MaterialComponents.TextInputEditText.OutlinedBox.Dense"
+        android:textSize="15dip"
+        android:id="@+id/editText_Deposito" />
+    <Button
+        android:text="Guardar cita"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/button_Guardar" />
+    
+
+    
+</LinearLayout>

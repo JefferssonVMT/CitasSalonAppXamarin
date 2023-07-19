@@ -1,0 +1,446 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="http://tempuri.org/" xmlns:s="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:tm="http://microsoft.com/wsdl/mime/textMatching/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsdl:types>
+    <s:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/">
+      <s:element name="RegistrarCliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="apellido" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="edad" type="s:short" />
+            <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="RegistrarClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="RegistrarClienteResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Login">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="correo" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="contra" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="LoginResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="LoginResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_User_Id">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="email" type="s:string" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_User_IdResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Get_User_IdResult" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Horas_Disponibles_Fecha">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="dia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_Horas_Disponibles_FechaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Horas_Disponibles_FechaResult" type="tns:ArrayOfDetalleDia" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfDetalleDia">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="DetalleDia" nillable="true" type="tns:DetalleDia" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="DetalleDia">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="HoraId" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="Bloque" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="FechaId" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="Mes" type="s:short" />
+          <s:element minOccurs="1" maxOccurs="1" name="Dia" type="s:short" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Get_Tipos_Servicio">
+        <s:complexType />
+      </s:element>
+      <s:element name="Get_Tipos_ServicioResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_Tipos_ServicioResult" type="tns:ArrayOfTipos_Servicio" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfTipos_Servicio">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Tipos_Servicio" nillable="true" type="tns:Tipos_Servicio" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Tipos_Servicio">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="Get_Servicios">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="TipoServicioId" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Get_ServiciosResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Get_ServiciosResult" type="tns:ArrayOfServicios" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfServicios">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="Servicios" nillable="true" type="tns:Servicios" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="Servicios">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="nombre" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="TipoServicio_Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="AgendarCita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="descripcion" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="numero_deposito" type="s:string" />
+            <s:element minOccurs="1" maxOccurs="1" name="Servicio_Id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="Cliente_Id" type="s:int" />
+            <s:element minOccurs="1" maxOccurs="1" name="DetalleFechaBloque_Id" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="AgendarCitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="AgendarCitaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Marcar_Ocupado">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Detalle_Dia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Marcar_OcupadoResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Marcar_OcupadoResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Marcar_Disponible">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Detalle_Dia" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Marcar_DisponibleResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Marcar_DisponibleResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+    </s:schema>
+  </wsdl:types>
+  <wsdl:message name="RegistrarClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:RegistrarCliente" />
+  </wsdl:message>
+  <wsdl:message name="RegistrarClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:RegistrarClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapIn">
+    <wsdl:part name="parameters" element="tns:Login" />
+  </wsdl:message>
+  <wsdl:message name="LoginSoapOut">
+    <wsdl:part name="parameters" element="tns:LoginResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_User_IdSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_User_Id" />
+  </wsdl:message>
+  <wsdl:message name="Get_User_IdSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_User_IdResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Horas_Disponibles_FechaSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Horas_Disponibles_Fecha" />
+  </wsdl:message>
+  <wsdl:message name="Get_Horas_Disponibles_FechaSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Horas_Disponibles_FechaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tipos_ServicioSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Tipos_Servicio" />
+  </wsdl:message>
+  <wsdl:message name="Get_Tipos_ServicioSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_Tipos_ServicioResponse" />
+  </wsdl:message>
+  <wsdl:message name="Get_ServiciosSoapIn">
+    <wsdl:part name="parameters" element="tns:Get_Servicios" />
+  </wsdl:message>
+  <wsdl:message name="Get_ServiciosSoapOut">
+    <wsdl:part name="parameters" element="tns:Get_ServiciosResponse" />
+  </wsdl:message>
+  <wsdl:message name="AgendarCitaSoapIn">
+    <wsdl:part name="parameters" element="tns:AgendarCita" />
+  </wsdl:message>
+  <wsdl:message name="AgendarCitaSoapOut">
+    <wsdl:part name="parameters" element="tns:AgendarCitaResponse" />
+  </wsdl:message>
+  <wsdl:message name="Marcar_OcupadoSoapIn">
+    <wsdl:part name="parameters" element="tns:Marcar_Ocupado" />
+  </wsdl:message>
+  <wsdl:message name="Marcar_OcupadoSoapOut">
+    <wsdl:part name="parameters" element="tns:Marcar_OcupadoResponse" />
+  </wsdl:message>
+  <wsdl:message name="Marcar_DisponibleSoapIn">
+    <wsdl:part name="parameters" element="tns:Marcar_Disponible" />
+  </wsdl:message>
+  <wsdl:message name="Marcar_DisponibleSoapOut">
+    <wsdl:part name="parameters" element="tns:Marcar_DisponibleResponse" />
+  </wsdl:message>
+  <wsdl:portType name="CitasWebServiceSoap">
+    <wsdl:operation name="RegistrarCliente">
+      <wsdl:input message="tns:RegistrarClienteSoapIn" />
+      <wsdl:output message="tns:RegistrarClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <wsdl:input message="tns:LoginSoapIn" />
+      <wsdl:output message="tns:LoginSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_User_Id">
+      <wsdl:input message="tns:Get_User_IdSoapIn" />
+      <wsdl:output message="tns:Get_User_IdSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Horas_Disponibles_Fecha">
+      <wsdl:input message="tns:Get_Horas_Disponibles_FechaSoapIn" />
+      <wsdl:output message="tns:Get_Horas_Disponibles_FechaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tipos_Servicio">
+      <wsdl:input message="tns:Get_Tipos_ServicioSoapIn" />
+      <wsdl:output message="tns:Get_Tipos_ServicioSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Get_Servicios">
+      <wsdl:input message="tns:Get_ServiciosSoapIn" />
+      <wsdl:output message="tns:Get_ServiciosSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="AgendarCita">
+      <wsdl:input message="tns:AgendarCitaSoapIn" />
+      <wsdl:output message="tns:AgendarCitaSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Marcar_Ocupado">
+      <wsdl:input message="tns:Marcar_OcupadoSoapIn" />
+      <wsdl:output message="tns:Marcar_OcupadoSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Marcar_Disponible">
+      <wsdl:input message="tns:Marcar_DisponibleSoapIn" />
+      <wsdl:output message="tns:Marcar_DisponibleSoapOut" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="CitasWebServiceSoap" type="tns:CitasWebServiceSoap">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarCliente">
+      <soap:operation soapAction="http://tempuri.org/RegistrarCliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_User_Id">
+      <soap:operation soapAction="http://tempuri.org/Get_User_Id" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Horas_Disponibles_Fecha">
+      <soap:operation soapAction="http://tempuri.org/Get_Horas_Disponibles_Fecha" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tipos_Servicio">
+      <soap:operation soapAction="http://tempuri.org/Get_Tipos_Servicio" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Servicios">
+      <soap:operation soapAction="http://tempuri.org/Get_Servicios" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgendarCita">
+      <soap:operation soapAction="http://tempuri.org/AgendarCita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Marcar_Ocupado">
+      <soap:operation soapAction="http://tempuri.org/Marcar_Ocupado" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Marcar_Disponible">
+      <soap:operation soapAction="http://tempuri.org/Marcar_Disponible" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="CitasWebServiceSoap12" type="tns:CitasWebServiceSoap">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="RegistrarCliente">
+      <soap12:operation soapAction="http://tempuri.org/RegistrarCliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Login">
+      <soap12:operation soapAction="http://tempuri.org/Login" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_User_Id">
+      <soap12:operation soapAction="http://tempuri.org/Get_User_Id" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Horas_Disponibles_Fecha">
+      <soap12:operation soapAction="http://tempuri.org/Get_Horas_Disponibles_Fecha" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Tipos_Servicio">
+      <soap12:operation soapAction="http://tempuri.org/Get_Tipos_Servicio" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Get_Servicios">
+      <soap12:operation soapAction="http://tempuri.org/Get_Servicios" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AgendarCita">
+      <soap12:operation soapAction="http://tempuri.org/AgendarCita" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Marcar_Ocupado">
+      <soap12:operation soapAction="http://tempuri.org/Marcar_Ocupado" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Marcar_Disponible">
+      <soap12:operation soapAction="http://tempuri.org/Marcar_Disponible" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="CitasWebService">
+    <wsdl:port name="CitasWebServiceSoap" binding="tns:CitasWebServiceSoap">
+      <soap:address location="http://citasapp.somee.com/CitasWebService.asmx" />
+    </wsdl:port>
+    <wsdl:port name="CitasWebServiceSoap12" binding="tns:CitasWebServiceSoap12">
+      <soap12:address location="http://citasapp.somee.com/CitasWebService.asmx" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

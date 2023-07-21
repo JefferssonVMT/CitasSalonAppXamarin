@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "305621505436",
+    "project_id": "xamarincitasapp",
+    "storage_bucket": "xamarincitasapp.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:305621505436:android:47b858259d16ad9b406459",
+        "android_client_info": {
+          "package_name": "com.companyname.citasappxamarin"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "305621505436-ttpl0grflq7f446ujskujvansk8n32de.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAx4Rd1rVYuOynFVr_GZT2wsjn1sV_SVyg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "305621505436-ttpl0grflq7f446ujskujvansk8n32de.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

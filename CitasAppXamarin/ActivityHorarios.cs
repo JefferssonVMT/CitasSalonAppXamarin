@@ -36,11 +36,12 @@ namespace CitasAppXamarin
             lv_Horarios.ItemClick += Lv_Horarios_ItemClick;
         }
 
+
         private void Lv_Horarios_ItemClick(object sender, AdapterView.ItemClickEventArgs e)
         {
             Intent i = new Intent(this, typeof(ActivityCrearCita));
 
-            DetalleDia det = fecha [e.Position];
+            DetalleDia det = fecha[e.Position];
 
             //Pasamos como parametro el id de la region al ActivityDetalleRegion
             i.PutExtra("idDetalleHorario", det.Id);

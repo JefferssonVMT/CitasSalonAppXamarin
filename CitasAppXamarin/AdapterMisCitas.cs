@@ -9,15 +9,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using CitasAppXamarin.com.somee.citasapp;
+using System.Globalization;
 
 namespace CitasAppXamarin
 {
-    class AdapterHorarios : BaseAdapter
+    class AdapterMisCitas : BaseAdapter
     {
         Activity context;
-        List<DetalleDia> Lista;
+        List<CitaInfo> Lista;
 
-        public AdapterHorarios(Activity context, List<DetalleDia> Lista)
+        public AdapterMisCitas(Activity context, List<CitaInfo> Lista)
         {
             this.context = context;
             this.Lista = Lista;
@@ -44,13 +45,13 @@ namespace CitasAppXamarin
 
             if (view == null)
             {
-                view = context.LayoutInflater.Inflate(Resource.Layout.horaItem, null);
+                view = context.LayoutInflater.Inflate(Resource.Layout.citasItem, null);
             }
 
-            view.FindViewById<TextView>(Resource.Id.textView_horaItem).Text = item.Bloque;
+            string fecha = new DateTime(item.año, item.mes, item.dia).ToString("M", new CultureInfo("es-ES"));
+            view.FindViewById<TextView>(Resource.Id.textView_servicio_fechayHora).Text = item.servicio + "\n" + fecha + "\n" + item.hora;
 
             return view;
         }
     }
-
 }

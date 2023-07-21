@@ -24,6 +24,7 @@ namespace CitasAppXamarin
 
             var calendar = FindViewById<CalendarView>(Resource.Id.calendarView1);
             calendar.DateChange += CalendarOnDateChange;
+            calendar.SetOutlineSpotShadowColor(Android.Graphics.Color.Red);
         }
 
         private void CalendarOnDateChange(object sender, CalendarView.DateChangeEventArgs args)
@@ -31,12 +32,24 @@ namespace CitasAppXamarin
             // Month + 1 porque por alguna razon empieza a contar los meses(solo los meses) desde 0
             var fecha = new DateTime(args.Year, args.Month + 1, args.DayOfMonth);
 
-            Intent intent = new Intent(this, typeof(ActivityHorarios));
+            if(Global.GetHorarios_Dia(fecha.Month, fecha.Day).Count > 0)
+            {
+                Intent intent = new Intent(this, typeof(ActivityHorarios));
 
-            intent.PutExtra("mes", fecha.Month);
-            intent.PutExtra("dia", fecha.Day);
+                intent.PutExtra("mes", fecha.Month);
+                intent.PutExtra("dia", fecha.Day);
 
-            StartActivityForResult(intent, 0);
+                StartActivityForResult(intent, 0);
+            }
+            else
+            {
+                var alerta = new AlertDialog.Builder(this);
+                alerta.SetTitle("Ups sin disponibilidad!");
+                alerta.SetMessage("\nAl parecer no tenemos ninguna hora libre en esta fecha, prueba agendar para otro dia o ponte en contacto con nosotros.");
+                alerta.Show();
+            }
+
+            
         }
 
     }

@@ -47,6 +47,10 @@ namespace CitasAppXamarin.com.somee.citasapp {
         
         private System.Threading.SendOrPostCallback Marcar_DisponibleOperationCompleted;
         
+        private System.Threading.SendOrPostCallback Citas_X_ClienteOperationCompleted;
+        
+        private System.Threading.SendOrPostCallback CancelarCitaOperationCompleted;
+        
         private bool useDefaultCredentialsSetExplicitly;
         
         /// <remarks/>
@@ -113,25 +117,32 @@ namespace CitasAppXamarin.com.somee.citasapp {
         public event Marcar_DisponibleCompletedEventHandler Marcar_DisponibleCompleted;
         
         /// <remarks/>
+        public event Citas_X_ClienteCompletedEventHandler Citas_X_ClienteCompleted;
+        
+        /// <remarks/>
+        public event CancelarCitaCompletedEventHandler CancelarCitaCompleted;
+        
+        /// <remarks/>
         [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/RegistrarCliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
-        public bool RegistrarCliente(string nombre, string apellido, string correo, string telefono, short edad, string contraseña) {
+        public bool RegistrarCliente(string nombre, string apellido, string correo, string telefono, short edad, string contraseña, string recontraseña) {
             object[] results = this.Invoke("RegistrarCliente", new object[] {
                         nombre,
                         apellido,
                         correo,
                         telefono,
                         edad,
-                        contraseña});
+                        contraseña,
+                        recontraseña});
             return ((bool)(results[0]));
         }
         
         /// <remarks/>
-        public void RegistrarClienteAsync(string nombre, string apellido, string correo, string telefono, short edad, string contraseña) {
-            this.RegistrarClienteAsync(nombre, apellido, correo, telefono, edad, contraseña, null);
+        public void RegistrarClienteAsync(string nombre, string apellido, string correo, string telefono, short edad, string contraseña, string recontraseña) {
+            this.RegistrarClienteAsync(nombre, apellido, correo, telefono, edad, contraseña, recontraseña, null);
         }
         
         /// <remarks/>
-        public void RegistrarClienteAsync(string nombre, string apellido, string correo, string telefono, short edad, string contraseña, object userState) {
+        public void RegistrarClienteAsync(string nombre, string apellido, string correo, string telefono, short edad, string contraseña, string recontraseña, object userState) {
             if ((this.RegistrarClienteOperationCompleted == null)) {
                 this.RegistrarClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnRegistrarClienteOperationCompleted);
             }
@@ -141,7 +152,8 @@ namespace CitasAppXamarin.com.somee.citasapp {
                         correo,
                         telefono,
                         edad,
-                        contraseña}, this.RegistrarClienteOperationCompleted, userState);
+                        contraseña,
+                        recontraseña}, this.RegistrarClienteOperationCompleted, userState);
         }
         
         private void OnRegistrarClienteOperationCompleted(object arg) {
@@ -394,6 +406,64 @@ namespace CitasAppXamarin.com.somee.citasapp {
         }
         
         /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/Citas_X_Cliente", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public CitaInfo[] Citas_X_Cliente(int IdCliente) {
+            object[] results = this.Invoke("Citas_X_Cliente", new object[] {
+                        IdCliente});
+            return ((CitaInfo[])(results[0]));
+        }
+        
+        /// <remarks/>
+        public void Citas_X_ClienteAsync(int IdCliente) {
+            this.Citas_X_ClienteAsync(IdCliente, null);
+        }
+        
+        /// <remarks/>
+        public void Citas_X_ClienteAsync(int IdCliente, object userState) {
+            if ((this.Citas_X_ClienteOperationCompleted == null)) {
+                this.Citas_X_ClienteOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCitas_X_ClienteOperationCompleted);
+            }
+            this.InvokeAsync("Citas_X_Cliente", new object[] {
+                        IdCliente}, this.Citas_X_ClienteOperationCompleted, userState);
+        }
+        
+        private void OnCitas_X_ClienteOperationCompleted(object arg) {
+            if ((this.Citas_X_ClienteCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.Citas_X_ClienteCompleted(this, new Citas_X_ClienteCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
+        [System.Web.Services.Protocols.SoapDocumentMethodAttribute("http://tempuri.org/CancelarCita", RequestNamespace="http://tempuri.org/", ResponseNamespace="http://tempuri.org/", Use=System.Web.Services.Description.SoapBindingUse.Literal, ParameterStyle=System.Web.Services.Protocols.SoapParameterStyle.Wrapped)]
+        public bool CancelarCita(int Id_Cita) {
+            object[] results = this.Invoke("CancelarCita", new object[] {
+                        Id_Cita});
+            return ((bool)(results[0]));
+        }
+        
+        /// <remarks/>
+        public void CancelarCitaAsync(int Id_Cita) {
+            this.CancelarCitaAsync(Id_Cita, null);
+        }
+        
+        /// <remarks/>
+        public void CancelarCitaAsync(int Id_Cita, object userState) {
+            if ((this.CancelarCitaOperationCompleted == null)) {
+                this.CancelarCitaOperationCompleted = new System.Threading.SendOrPostCallback(this.OnCancelarCitaOperationCompleted);
+            }
+            this.InvokeAsync("CancelarCita", new object[] {
+                        Id_Cita}, this.CancelarCitaOperationCompleted, userState);
+        }
+        
+        private void OnCancelarCitaOperationCompleted(object arg) {
+            if ((this.CancelarCitaCompleted != null)) {
+                System.Web.Services.Protocols.InvokeCompletedEventArgs invokeArgs = ((System.Web.Services.Protocols.InvokeCompletedEventArgs)(arg));
+                this.CancelarCitaCompleted(this, new CancelarCitaCompletedEventArgs(invokeArgs.Results, invokeArgs.Error, invokeArgs.Cancelled, invokeArgs.UserState));
+            }
+        }
+        
+        /// <remarks/>
         public new void CancelAsync(object userState) {
             base.CancelAsync(userState);
         }
@@ -489,6 +559,123 @@ namespace CitasAppXamarin.com.somee.citasapp {
             }
             set {
                 this.diaField = value;
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Xml", "4.8.9032.0")]
+    [System.SerializableAttribute()]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    [System.Xml.Serialization.XmlTypeAttribute(Namespace="http://tempuri.org/")]
+    public partial class CitaInfo {
+        
+        private int idField;
+        
+        private string servicioField;
+        
+        private int añoField;
+        
+        private int mesField;
+        
+        private int diaField;
+        
+        private string horaField;
+        
+        private int estadoCita_IdField;
+        
+        private int cliente_IdField;
+        
+        private int detalleFechaBloque_IdField;
+        
+        /// <remarks/>
+        public int Id {
+            get {
+                return this.idField;
+            }
+            set {
+                this.idField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string servicio {
+            get {
+                return this.servicioField;
+            }
+            set {
+                this.servicioField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int año {
+            get {
+                return this.añoField;
+            }
+            set {
+                this.añoField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int mes {
+            get {
+                return this.mesField;
+            }
+            set {
+                this.mesField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int dia {
+            get {
+                return this.diaField;
+            }
+            set {
+                this.diaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public string hora {
+            get {
+                return this.horaField;
+            }
+            set {
+                this.horaField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int estadoCita_Id {
+            get {
+                return this.estadoCita_IdField;
+            }
+            set {
+                this.estadoCita_IdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int cliente_Id {
+            get {
+                return this.cliente_IdField;
+            }
+            set {
+                this.cliente_IdField = value;
+            }
+        }
+        
+        /// <remarks/>
+        public int detalleFechaBloque_Id {
+            get {
+                return this.detalleFechaBloque_IdField;
+            }
+            set {
+                this.detalleFechaBloque_IdField = value;
             }
         }
     }
@@ -792,6 +979,58 @@ namespace CitasAppXamarin.com.somee.citasapp {
         private object[] results;
         
         internal Marcar_DisponibleCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public bool Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((bool)(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void Citas_X_ClienteCompletedEventHandler(object sender, Citas_X_ClienteCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class Citas_X_ClienteCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal Citas_X_ClienteCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
+                base(exception, cancelled, userState) {
+            this.results = results;
+        }
+        
+        /// <remarks/>
+        public CitaInfo[] Result {
+            get {
+                this.RaiseExceptionIfNecessary();
+                return ((CitaInfo[])(this.results[0]));
+            }
+        }
+    }
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    public delegate void CancelarCitaCompletedEventHandler(object sender, CancelarCitaCompletedEventArgs e);
+    
+    /// <remarks/>
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Web.Services", "4.8.9032.0")]
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.ComponentModel.DesignerCategoryAttribute("code")]
+    public partial class CancelarCitaCompletedEventArgs : System.ComponentModel.AsyncCompletedEventArgs {
+        
+        private object[] results;
+        
+        internal CancelarCitaCompletedEventArgs(object[] results, System.Exception exception, bool cancelled, object userState) : 
                 base(exception, cancelled, userState) {
             this.results = results;
         }

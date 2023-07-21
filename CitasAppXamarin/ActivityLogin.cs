@@ -38,7 +38,6 @@ namespace CitasAppXamarin
 
             if (Global.IniciarSesion(Email, Contra))
             {
-                Toast.MakeText(this, "Se inicio sesion correctamente", ToastLength.Long).Show();
                 Global.User_Id = Global.Servicio.Get_User_Id(Email);
 
                 // Reseteo los campos por seguridad
@@ -49,7 +48,7 @@ namespace CitasAppXamarin
                 //StartActivityForResult(intent, 0);
                 Toast.MakeText(this, "Iniciaste sesion exitosamente", ToastLength.Long).Show();
 
-                Intent intent = new Intent(this, typeof(ActivityCalendario));
+                Intent intent = new Intent(this, typeof(ActivityDashboard));
 
                 StartActivityForResult(intent, 0);
             }

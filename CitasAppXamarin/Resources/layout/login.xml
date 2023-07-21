@@ -12,7 +12,6 @@
         android:layout_height="wrap_content"
         android:isScrollContainer="true">
 
-
         <ImageView
             android:src="@drawable/logo"
             android:scaleType="centerCrop"
@@ -60,7 +59,6 @@
             android:background="@drawable/rounded_input"
             android:id="@+id/editText2" />
 
-
         <androidx.appcompat.widget.AppCompatButton
             android:text="Iniciar sesión"
             android:textSize="25dp"
@@ -74,7 +72,6 @@
             android:background="@drawable/rounded_btn"
             android:textColor="@android:color/white"
             android:id="@+id/button1" />
-
 
         <LinearLayout
             android:orientation="horizontal"
@@ -97,8 +94,8 @@
                 android:id="@+id/textView4" />
 
             <TextView
-                android:fontFamily="sans-serif"
                 android:text="Registrate"
+                android:fontFamily="sans-serif"
                 android:textAlignment="center"
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:layout_width="wrap_content"
@@ -108,5 +105,7 @@
                 android:id="@+id/textView_Registro" />
 
         </LinearLayout>
+
     </LinearLayout>
+
 </ScrollView>

@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:background="@drawable/fondologin">
+    
+    <ImageView
+            android:src="@drawable/logo"
+            android:scaleType="centerCrop"
+            android:layout_gravity="center"
+            android:adjustViewBounds="true"
+            android:layout_width="350dp"
+            android:layout_height="250dp"
+            android:id="@+id/imageView1"/>
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:text="Agendar cita"
+            android:textSize="25dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="65dp"
+            android:layout_width="315dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_btn"
+            android:textColor="@android:color/white"
+            android:id="@+id/button_nueva_cita" />
+
+    <androidx.appcompat.widget.AppCompatButton
+            android:text="Mis citas"
+            android:textSize="25dp"
+            android:textAllCaps="false"
+            android:gravity="center"
+            android:layout_gravity="center_horizontal"
+            android:layout_height="65dp"
+            android:layout_width="315dp"
+            android:fontFamily="sans-serif"
+            android:layout_marginTop="30dp"
+            android:background="@drawable/rounded_btn"
+            android:textColor="@android:color/white"
+            android:id="@+id/button_mis_citas" />
+
+</LinearLayout>

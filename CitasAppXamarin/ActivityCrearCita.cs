@@ -56,7 +56,7 @@ namespace CitasAppXamarin
             if(Global.Agendar_Cita(Global.User_Id, idDetalleHorario, idServicio, descr, numDep))
             {
                 Global.Marcar_Ocupado(idDetalleHorario);
-                Intent i = new Intent(this, typeof(ActivityCalendario));
+                Intent i = new Intent(this, typeof(ActivityDashboard));
                 Toast.MakeText(this, "Tu cita se ha registrado con exito", ToastLength.Long).Show();
                 StartActivity(i);
             }
@@ -76,6 +76,12 @@ namespace CitasAppXamarin
 
             Servicios = Global.Get_Servivios(idTipoServicio);
             Servicios defltItem = new Servicios() { Id = 0, nombre = "Seleccione un tipo de servicio", TipoServicio_Id = 0 };
+            if (idTipoServicio > 0)
+            
+            {
+                defltItem = new Servicios() { Id = 0, nombre = "Seleccione un servicio", TipoServicio_Id = 0 };
+            }
+                
 
             List<string> servs = new List<string>();
             Servicios.Insert(0, defltItem);

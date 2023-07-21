@@ -23,9 +23,9 @@ namespace CitasAppXamarin
             return Servicio.Login(Email, Pass);
         }
 
-        public static bool Registro(string nombre, string apellido, string correo, string telefono, short edad, string contra)
+        public static bool Registro(string nombre, string apellido, string correo, string telefono, short edad, string contra, string recontra)
         {
-            return Servicio.RegistrarCliente(nombre, apellido, correo, telefono, edad, contra);
+            return Servicio.RegistrarCliente(nombre, apellido, correo, telefono, edad, contra, recontra);
         }
 
         public static int Get_UserID(string email)
@@ -56,6 +56,21 @@ namespace CitasAppXamarin
         public static bool Marcar_Ocupado(int DetalleFechaBloque_Id)
         {
             return Servicio.Marcar_Ocupado(DetalleFechaBloque_Id);
+        }
+
+        public static bool Marcar_Disponible(int DetalleFechaBloque_Id)
+        {
+            return Servicio.Marcar_Disponible(DetalleFechaBloque_Id);
+        }
+
+        public static List<CitaInfo> Citas_X_Cliente(int idCliente)
+        {
+            return Servicio.Citas_X_Cliente(idCliente).ToList();
+        }
+
+        public static bool CancelarCita(int idCita)
+        {
+            return Servicio.CancelarCita(idCita);
         }
     }
 }

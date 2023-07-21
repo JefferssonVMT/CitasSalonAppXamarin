@@ -11,6 +11,7 @@
             <s:element minOccurs="0" maxOccurs="1" name="telefono" type="s:string" />
             <s:element minOccurs="1" maxOccurs="1" name="edad" type="s:short" />
             <s:element minOccurs="0" maxOccurs="1" name="contraseña" type="s:string" />
+            <s:element minOccurs="0" maxOccurs="1" name="recontraseña" type="s:string" />
           </s:sequence>
         </s:complexType>
       </s:element>
@@ -173,6 +174,52 @@
           </s:sequence>
         </s:complexType>
       </s:element>
+      <s:element name="Citas_X_Cliente">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="IdCliente" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="Citas_X_ClienteResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="0" maxOccurs="1" name="Citas_X_ClienteResult" type="tns:ArrayOfCitaInfo" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:complexType name="ArrayOfCitaInfo">
+        <s:sequence>
+          <s:element minOccurs="0" maxOccurs="unbounded" name="CitaInfo" nillable="true" type="tns:CitaInfo" />
+        </s:sequence>
+      </s:complexType>
+      <s:complexType name="CitaInfo">
+        <s:sequence>
+          <s:element minOccurs="1" maxOccurs="1" name="Id" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="servicio" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="año" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="mes" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="dia" type="s:int" />
+          <s:element minOccurs="0" maxOccurs="1" name="hora" type="s:string" />
+          <s:element minOccurs="1" maxOccurs="1" name="estadoCita_Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="cliente_Id" type="s:int" />
+          <s:element minOccurs="1" maxOccurs="1" name="detalleFechaBloque_Id" type="s:int" />
+        </s:sequence>
+      </s:complexType>
+      <s:element name="CancelarCita">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="Id_Cita" type="s:int" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
+      <s:element name="CancelarCitaResponse">
+        <s:complexType>
+          <s:sequence>
+            <s:element minOccurs="1" maxOccurs="1" name="CancelarCitaResult" type="s:boolean" />
+          </s:sequence>
+        </s:complexType>
+      </s:element>
     </s:schema>
   </wsdl:types>
   <wsdl:message name="RegistrarClienteSoapIn">
@@ -229,6 +276,18 @@
   <wsdl:message name="Marcar_DisponibleSoapOut">
     <wsdl:part name="parameters" element="tns:Marcar_DisponibleResponse" />
   </wsdl:message>
+  <wsdl:message name="Citas_X_ClienteSoapIn">
+    <wsdl:part name="parameters" element="tns:Citas_X_Cliente" />
+  </wsdl:message>
+  <wsdl:message name="Citas_X_ClienteSoapOut">
+    <wsdl:part name="parameters" element="tns:Citas_X_ClienteResponse" />
+  </wsdl:message>
+  <wsdl:message name="CancelarCitaSoapIn">
+    <wsdl:part name="parameters" element="tns:CancelarCita" />
+  </wsdl:message>
+  <wsdl:message name="CancelarCitaSoapOut">
+    <wsdl:part name="parameters" element="tns:CancelarCitaResponse" />
+  </wsdl:message>
   <wsdl:portType name="CitasWebServiceSoap">
     <wsdl:operation name="RegistrarCliente">
       <wsdl:input message="tns:RegistrarClienteSoapIn" />
@@ -265,6 +324,14 @@
     <wsdl:operation name="Marcar_Disponible">
       <wsdl:input message="tns:Marcar_DisponibleSoapIn" />
       <wsdl:output message="tns:Marcar_DisponibleSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="Citas_X_Cliente">
+      <wsdl:input message="tns:Citas_X_ClienteSoapIn" />
+      <wsdl:output message="tns:Citas_X_ClienteSoapOut" />
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCita">
+      <wsdl:input message="tns:CancelarCitaSoapIn" />
+      <wsdl:output message="tns:CancelarCitaSoapOut" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="CitasWebServiceSoap" type="tns:CitasWebServiceSoap">
@@ -350,6 +417,24 @@
         <soap:body use="literal" />
       </wsdl:output>
     </wsdl:operation>
+    <wsdl:operation name="Citas_X_Cliente">
+      <soap:operation soapAction="http://tempuri.org/Citas_X_Cliente" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCita">
+      <soap:operation soapAction="http://tempuri.org/CancelarCita" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
   </wsdl:binding>
   <wsdl:binding name="CitasWebServiceSoap12" type="tns:CitasWebServiceSoap">
     <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" />
@@ -427,6 +512,24 @@
     </wsdl:operation>
     <wsdl:operation name="Marcar_Disponible">
       <soap12:operation soapAction="http://tempuri.org/Marcar_Disponible" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="Citas_X_Cliente">
+      <soap12:operation soapAction="http://tempuri.org/Citas_X_Cliente" style="document" />
+      <wsdl:input>
+        <soap12:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap12:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="CancelarCita">
+      <soap12:operation soapAction="http://tempuri.org/CancelarCita" style="document" />
       <wsdl:input>
         <soap12:body use="literal" />
       </wsdl:input>

@@ -70,9 +70,12 @@
   <ItemGroup>
     <Compile Include="ActivityCalendario.cs" />
     <Compile Include="ActivityCrearCita.cs" />
+    <Compile Include="ActivityDashboard.cs" />
     <Compile Include="ActivityHorarios.cs" />
+    <Compile Include="ActivityMisCitas.cs" />
     <Compile Include="ActivityRegistro.cs" />
     <Compile Include="AdapterHorarios.cs" />
+    <Compile Include="AdapterMisCitas.cs" />
     <Compile Include="Global.cs" />
     <Compile Include="ActivityLogin.cs" />
     <Compile Include="Resources\Resource.designer.cs" />
@@ -87,6 +90,9 @@
     <None Include="Resources\AboutResources.txt" />
     <None Include="Properties\AndroidManifest.xml" />
     <None Include="Assets\AboutAssets.txt" />
+    <None Include="Web References\com.somee.citasapp\CitaInfo.datasource">
+      <DependentUpon>Reference.map</DependentUpon>
+    </None>
     <None Include="Web References\com.somee.citasapp\CitasWebService.wsdl" />
     <None Include="Web References\com.somee.citasapp\DetalleDia.datasource">
       <DependentUpon>Reference.map</DependentUpon>
@@ -214,6 +220,26 @@
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\drawable\telefono_input_icon.xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\horaItem.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\dashboard.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\mis_citas.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
+  </ItemGroup>
+  <ItemGroup>
+    <AndroidResource Include="Resources\layout\citasItem.xml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
